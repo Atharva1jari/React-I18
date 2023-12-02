@@ -1,19 +1,34 @@
 import React from 'react';
-import "./Home.css"
+import I18n from'./../../utils/I18n.js';
+import "./Home.css";
+
 
 function home() {
 
-    const usersCount = 10;
+ 
     return (
         <div>
-            <h1>Welcome</h1>
-            <p>We hope you enjoy learning React.</p>
+            <h1>{I18n("welcomeMessage")}</h1>
 
-            <h3>Have a great day!</h3>
+            <p>{I18n("normalMessage")}</p>
+
+            <h3>{I18n("greetingMessage")}</h3>
+
+            <select 
+            defaultvalue={localStorage.getItem("lang")} 
+            onChange={(e)=>{
+                localStorage.setItem("lang", e.target.value);
+                window.location.reload();
+            }}>
+                <option Value="mr">Marathi</option>
+                <option Value="hi">Hindi</option>
+                <option Value="en">English</option>
+            </select>
+           
              
-            <p>
+           {/* <p>
                {usersCount} users are learning in this seassion.
-            </p>
+            </p>*/}
         </div>
     )
 }
